@@ -3,6 +3,7 @@ class Solution:
         l,r,k=0,0,float("inf")
         curr_sum = 0
         #k is min len of subarray
+        # curr sum will calculate running sum of window
         while r < len(nums):
             curr_sum += nums[r]
             
