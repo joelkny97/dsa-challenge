@@ -5,9 +5,7 @@ class Solution:
         a=-1
         b=-1
         hashmap = {i:0 for i in range(1,n**2 + 1)}
-        missing = set()
-        maxval = -1
-        minval = 2
+
         for i in grid:
             for j in i:
                 if hashmap.get(j) == 0:
