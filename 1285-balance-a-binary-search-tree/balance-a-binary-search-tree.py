@@ -7,7 +7,8 @@
 class Solution:
     def balanceBST(self, root: Optional[TreeNode]) -> Optional[TreeNode]:
 
-
+        if not root:
+            return None
 
         inord = []
 
@@ -25,17 +26,16 @@ class Solution:
                 inorder(root.right)
             
         inorder(root)
-        print(inord)
+        # print(inord)
         if len(inord) <= 1:
             return root
 
-        mid = len(inord)//2
         new_root = TreeNode(0)
         q = [(new_root, 0, len(inord)-1 )]
 
         while q:
             node, l, r = q.pop(0)
-            mid = (l + r) // 2
+            mid = l +(r - l) // 2
             node.val = inord[mid]
             
             if l <= mid-1:
