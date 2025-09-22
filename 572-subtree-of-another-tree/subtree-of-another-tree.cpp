@@ -16,8 +16,8 @@ public:
         if (!root ) return false;
         if (!subRoot) return true;
 
-        TreeNode* currentTree = root;
-        TreeNode* currentSub = subRoot;
+        // TreeNode* currentTree = root;
+        // TreeNode* currentSub = subRoot;
 
         queue<TreeNode*> q;
         // queue<TreeNode*> qSub;
@@ -29,8 +29,8 @@ public:
             TreeNode* curr = q.front();
             q.pop();
             if (!curr) continue;
-            if (curr->val == currentSub->val) {
-                res = isSame(curr, currentSub);
+            if (curr->val == subRoot->val) {
+                res = isSame(curr, subRoot);
                 if (res) return true;
                 // return isSame(curr->left, currentSub) || isSame(curr->right, currentSub);
             }
@@ -40,7 +40,7 @@ public:
             // }
         }
 
-        return res;
+        return false;
         
     }
 private:
