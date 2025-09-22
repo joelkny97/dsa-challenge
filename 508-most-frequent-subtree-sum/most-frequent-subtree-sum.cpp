@@ -17,12 +17,12 @@ public:
     vector<int> findFrequentTreeSum(TreeNode* root) {
         
         if (root == nullptr) return {};
-        
-        dfs(root);
         maxFreq = INT_MIN;
-        for (auto& i: counts) {
-            maxFreq = max(i.second, maxFreq);
-        }
+        dfs(root);
+
+        // for (auto& i: counts) {
+        //     maxFreq = max(i.second, maxFreq);
+        // }
 
         for (auto& i: counts) {
             if (i.second == maxFreq) {
@@ -41,6 +41,7 @@ private:
 
         int sum = root->val + dfs(root->left) + dfs(root->right);
         counts[sum] += 1;
+        maxFreq = max(counts[sum], maxFreq);
         return sum;
     }
 };
