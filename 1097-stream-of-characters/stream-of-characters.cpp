@@ -26,14 +26,11 @@ public:
     }
     
     bool query(char letter) {
-        if (stream.size() < maxLength) {
-            stream.push_back(letter);    
+        if (stream.size() > maxLength) {
+            stream.pop_front();   
         }
-        else {
-            stream.pop_front();
-            stream.push_back(letter);
-        }
-
+        
+        stream.push_back(letter);
         return find();
 
         
