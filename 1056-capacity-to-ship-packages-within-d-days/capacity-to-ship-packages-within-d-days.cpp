@@ -2,7 +2,7 @@ class Solution {
 public:
     int shipWithinDays(vector<int>& weights, int days) {
 
-        int left = 0; // search window starts from max weight (most that the capacity can support)
+        int left = 0; // search window starts from max weight (min capacity ship needs support)
 
         int right = 0; // search window ends at the total weight present in weights array
 
@@ -14,8 +14,10 @@ public:
 
         while (left <= right ){
             int mid = left + (right-left) /2;
+            int d=1;
+            d = isFeasible(weights,days, mid);
 
-            if (isFeasible(weights,days, mid) ){
+            if (d<=days){
                 // this capacity is capable to ship within days
                 // decrease search window till mid
                 right = mid-1;
@@ -32,7 +34,7 @@ public:
     }
 
 private:
-    bool isFeasible(const vector<int>& weights, const int days,int capacity){
+    int isFeasible(const vector<int>& weights, const int days,int capacity){
 
         int day=1;
         int total = 0;
@@ -44,11 +46,11 @@ private:
                 total = w; // reset total to current weight item
                 day+=1; // weight cannot be fit within capacity, need another day
 
-                if (day > days) return false; // cannot ship within days
+                // if (day > days) return false; // cannot ship within days
             }   
         }
 
-        return true; // possible to ship within days at this capacity
+        return day; // possible to ship within days at this capacity
 
 
     }
