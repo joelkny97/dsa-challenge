@@ -14,10 +14,8 @@ public:
 
         while (left <= right ){
             int mid = left + (right-left) /2;
-            int d=1;
-            d = isFeasible(weights,mid);
 
-            if (d<=days){
+            if (isFeasible(weights,days, mid) ){
                 // this capacity is capable to ship within days
                 // decrease search window till mid
                 right = mid-1;
@@ -34,7 +32,7 @@ public:
     }
 
 private:
-    int isFeasible(const vector<int>& weights, int capacity){
+    bool isFeasible(const vector<int>& weights, const int days,int capacity){
 
         int day=1;
         int total = 0;
@@ -46,11 +44,11 @@ private:
                 total = w; // reset total to current weight item
                 day+=1; // weight cannot be fit within capacity, need another day
 
-                // if (day > days) return false; // cannot ship within days
+                if (day > days) return false; // cannot ship within days
             }   
         }
 
-        return day; // possible to ship within days at this capacity
+        return true; // possible to ship within days at this capacity
 
 
     }
