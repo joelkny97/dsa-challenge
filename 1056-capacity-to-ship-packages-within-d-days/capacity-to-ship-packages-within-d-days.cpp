@@ -15,7 +15,7 @@ public:
         while (left <= right ){
             int mid = left + (right-left) /2;
             int d=1;
-            d = isFeasible(weights,days, mid);
+            d = isFeasible(weights,mid);
 
             if (d<=days){
                 // this capacity is capable to ship within days
@@ -34,7 +34,7 @@ public:
     }
 
 private:
-    int isFeasible(const vector<int>& weights, const int days,int capacity){
+    int isFeasible(const vector<int>& weights, int capacity){
 
         int day=1;
         int total = 0;
