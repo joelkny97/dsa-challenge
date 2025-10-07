@@ -12,13 +12,13 @@ public:
         }
 
 
-        while (left < right ){
+        while (left <= right ){
             int mid = left + (right-left) /2;
 
             if (isFeasible(weights,days, mid) ){
                 // this capacity is capable to ship within days
                 // decrease search window till mid
-                right = mid;
+                right = mid-1;
             }
             else{
                 // move search window leftward
